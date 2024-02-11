@@ -1,0 +1,25 @@
+1.Project Setup: Using Visual Studio or another development environment, I began by starting a new ASP.NET Core Web API project. This required naming the project (Project_KYC360_ in this example), defining any relevant options, and choosing the suitable project template.
+
+2.Including Necessary NuGet Packages: I made sure my project had the NuGet packages it needed. Packages for Entity Framework Core, ASP.NET Core, and any other libraries I want to use are usually included in these. My code's namespaces suggest that I most likely included packages for Microsoft.Among them are Newtonsoft.Json, Microsoft.AspNetCore.Mvc, Newtonsoft.Http, and Microsoft.EntityFrameworkCore.Storage.
+
+
+3.Defining Models: To represent the data entities I'll be dealing with, I made model classes. Here, I have at least one model class called Name (which would be a better name for it: Employee), and its properties (Id, EntityId, FirstName, MiddleName, Surname) match the values in my database table.
+
+4.Configuration Setup: I set up the appsettings.json file with the database connection strings and other application settings. My SQL Server database's connection string was entered in a part of this file that probably has to do with connection strings.
+
+5.The process of creating a controller was creating a class called EmployeeInformationController, which I embellished with attributes that specified the routing and API behavior. This class was derived from ControllerBase. Among these properties are [ApiController] and [Route("api/[controller]")].
+
+6.Constructor Injection: To access configuration settings from appsettings.json, I injected an instance of IConfiguration into the constructor of the controller.
+
+
+7.Defining Action Methods: I created action methods in the controller to deal with HTTP requests. In this instance, employee data is retrieved from the database using the GetEmployees method, which is indicated with [HttpGet] and [Route("GetAllEmployees")].
+
+8.Database Access: Using the configured connection string, I created code inside the GetEmployees function that connects to the database, retrieves employee data using a SQL query, and maps the query results to instances of the Name (or Employee) model class.
+
+9.Serialization: Using Newtonsoft, I serialized the employee data that was retrieved into JSON format.Json (SerializeObject.JsonConvert).
+
+
+10.Error Handling: To deal with situations where no data is found or an error arises during database access, I put simple error handling into place. This includes utilizing bespoke error messages and HTTP status codes to return relevant error answers.
+
+
+
